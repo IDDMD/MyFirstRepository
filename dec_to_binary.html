@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1006006簡子翔</title>   
+</head>
+
+<script language="JavaScript" type="text/JavaScript">
+    
+!--//
+function rvt(){
+	var x=0, y=0;
+	p = new Array;
+	q = new Array;
+
+	e = document.getElementById('dec_num').value;
+	x = parseInt(e);
+
+	tbl = document.getElementById('righthere');
+	tbody = tbl.getElementsByTagName('tbody')[0];
+	trs = tbody.getElementsByTagName('tr');
+	tr0 = clearTD(trs[0]);
+	tr1 = clearTD(trs[1]);
+	tr2 = clearTD(trs[2]);
+
+	for (i=0; i<=30; i++)
+	{
+		y = Math.pow(2, i);
+		p[i] = i;
+		q[i] = (y&x)/y;
+
+		if (y>x)
+		{
+			break;
+		}
+	}
+	p.pop();
+	q.pop();
+
+	p.reverse();
+	q.reverse();
+
+	for (j=0;j<p.length ; j++)
+	{
+		td0s = createTD(q[j]);
+		tr0.appendChild(td0s);
+		td1s = createTD(p[j]);
+		tr1.appendChild(td1s);
+		td2s = createTD(Math.pow(2, p[j]));
+		tr2.appendChild(td2s);
+	}
+
+	document.getElementById('bin_num').value = q.join('');
+
+	document.getElementById('dec_num').focus();
+	document.getElementById('dec_num').select();
+	return false;
+}
+
+
+function createTD(e) {
+	var td = document.createElement('td');
+	var td_txt = document.createTextNode(e);
+	td.align = 'right';
+	td.appendChild(td_txt);
+	return td;
+}
+
+function clearTD(tr) {
+	tds = tr.getElementsByTagName('td');
+	for (i=tds.length-1; i>=0; i--)
+	{
+		tr.removeChild(tds[i]);
+		tds[i] = null;
+	}
+	return tr;
+}
+
+//-->
+
+
+
+</script>
+<label>
+<input >
+
+
+
+<body onload="document.getElementById('dec_num').focus();">
+    
+
+    <p>請輸入十進位數：<input id="dec_num" size="10">&nbsp;<button onclick="rvt();">轉換</button></p>
+    <p>二進位值：<input id="bin_num" size="30"></p>    
+    
+    
+</body>
+</html>
