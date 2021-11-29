@@ -3,4 +3,4 @@ MyFirstRepository
 
 計算機概論
 
-github.com/IDDMD
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
